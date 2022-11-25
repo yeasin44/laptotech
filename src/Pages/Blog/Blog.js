@@ -13,16 +13,20 @@ const Blog = () => {
           className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box mt-4"
         >
           <div className="collapse-title text-xl font-medium">
-            1. What is the difference between SQL and NoSQL?
+            1. What are the different ways to manage a state in a React
+            application?
           </div>
           <div className="collapse-content">
             <p>
-              <span className="font-semibold">Ans:</span> SQL is the programming
-              language used to interface with relational databases. (Relational
-              databases model data as records in rows and tables with logical
-              links between them). NoSQL is a class of DBMs that are
-              non-relational and generally do not use SQL.
+              <span className="font-semibold">Ans:</span> There are four main
+              ways to manage a state in a React apps:
             </p>
+            <ul>
+              <li>1. Local state</li>
+              <li>2. Global state</li>
+              <li>3. Server state</li>
+              <li>4. URL state</li>
+            </ul>
           </div>
         </div>
         <div
