@@ -1,9 +1,12 @@
 import DashboardLayout from "../../Layouts/DashboardLayout/DashboardLayout";
 import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
+
 import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
 import Login from "../../Pages/Login/Login";
+import ProductCardDetails from "../../Pages/Services/Products/ProductCardDetails/ProductCardDetails";
 import Products from "../../Pages/Services/Products/Products";
 import SignUp from "../../Pages/SignUp/SignUp";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Main } = require("../../Layouts/Main/Main");
@@ -29,11 +32,28 @@ const router = createBrowserRouter([
       },
       {
         path: "/products/:id",
-        element: <Products></Products>,
+        element: <ProductCardDetails></ProductCardDetails>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/products/${params.id}`),
+      },
+      {
+        path: "/products/:id",
+        element: <ProductCardDetails></ProductCardDetails>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/products/${params.id}`),
       },
     ],
   },
 
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
+    children: [{}],
+  },
   {
     path: "/dashboard",
     element: <DashboardLayout></DashboardLayout>,

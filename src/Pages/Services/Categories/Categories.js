@@ -12,12 +12,17 @@ const Categories = () => {
       .then((data) => setCategories(data));
   }, []);
   return (
-    <div className="border text-center">
-      <h2>Categories</h2>
-      <p>All category: {categories.length}</p>
+    <div className="border-2 border-slate-900 w-60 h-40 rounded-xl  bg-slate-800">
+      <h2 className="text-lg font-bold mt-4 text-white text-center">
+        All Categories
+      </h2>
+      <div className="border w-32 mx-auto"></div>
+      {/* <p>All category: {categories.length}</p> */}
       {categories?.map((category) => (
         <ul>
-          <Link to={`/category/$id`}>{category.name}</Link>
+          <Link className="font-bold text-white ml-16" to={`/category/$id`}>
+            {category.name}
+          </Link>
         </ul>
       ))}
     </div>

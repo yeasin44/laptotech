@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 import toast from "react-hot-toast";
+import { GoogleAuthProvider } from "firebase/auth";
 
 const SignUp = () => {
   const {
@@ -13,8 +14,9 @@ const SignUp = () => {
 
   const [signInError, setSignInError] = useState("");
 
-  const { createUser, updateUser } = useContext(AuthContext);
+  const { createUser, updateUser, socialLogin } = useContext(AuthContext);
   const [createdUserEmail, setCreatedUserEmail] = useState("");
+  const googleProvider = new GoogleAuthProvider();
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -32,14 +34,24 @@ const SignUp = () => {
         const userInfo = {
           displayName: data.name,
         };
-        // updateUser(userInfo)
-        //   .then(() => {})
-        //   .catch((error) => console.error(error));
+        updateUser(userInfo)
+          .then(() => {})
+          .catch((error) => console.error(error));
       })
       .catch((error) => {
         console.error(error);
         setSignInError(error.message.slice(22, -2));
       });
+  };
+
+  const handleSocialLogin = () => {
+    socialLogin(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        toast.success("Login successfull");
+        navigate(from, { replace: true });
+      })
+      .catch((error) => console.error(error));
   };
   return (
     <div className="h-[800px] flex justify-center items-center">
@@ -107,6 +119,7 @@ const SignUp = () => {
           <div className="divider">OR</div>
 
           <input
+            onClick={handleSocialLogin}
             type="submit"
             value="CONTINUE WITH GOOGLE"
             className="w-full btn btn-outline"

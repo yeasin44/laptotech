@@ -1,9 +1,11 @@
+import { GoogleAuthProvider } from "firebase/auth";
 import React, { useContext, useState } from "react";
 import { Toast } from "react-daisyui";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
+import { FaGoogle } from "react-icons/fa";
 
 const Login = () => {
   const {
@@ -18,7 +20,19 @@ const Login = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
-  const { login } = useContext(AuthContext);
+  const { login, socialLogin } = useContext(AuthContext);
+  const googleProvider = new GoogleAuthProvider();
+
+  const handleSocialLogin = () => {
+    socialLogin(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        toast.success("Login successfull");
+        navigate(from, { replace: true });
+      })
+      .catch((error) => console.error(error));
+  };
+
   const handleLogin = (data) => {
     // console.log(data);
     setLoginError("");
@@ -40,6 +54,15 @@ const Login = () => {
       <div className="w-96 p-8 border-2 border-slate-900 rounded-2xl">
         <h2 className="text-xl text-center font-bold py-6">Login</h2>
         <form onSubmit={handleSubmit(handleLogin)}>
+          <div className="btn btn-outline w-full flex justify-center items-center">
+            <FaGoogle className="text-lg mr-2" />
+            <input
+              onClick={handleSocialLogin}
+              type="submit"
+              value="CONTINUE WITH GOOGLE"
+            />
+          </div>
+          <div className="divider">OR</div>
           <div className="form-control w-full ">
             <label className="label">
               <span className="label-text">Email</span>
@@ -90,12 +113,6 @@ const Login = () => {
               Create an account
             </Link>
           </p>
-          <div className="divider">OR</div>
-          <input
-            type="submit"
-            className="btn btn-outline w-full"
-            value="CONTINUE WITH GOOGLE"
-          />
         </form>
       </div>
     </div>
