@@ -34,22 +34,16 @@ const Blog = () => {
           className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box mt-1"
         >
           <div className="collapse-title text-xl font-medium">
-            2. What is JWT, and how does it work?
+            2. How does prototypical inheritance work?
           </div>
           <div className="collapse-content">
             <p>
-              <span className="font-semibold">Ans:</span> JSON Web Token (JWT)
-              is an open standard (RFC 7519) that defines a compact and
-              self-contained way for securely transmitting information between
-              parties as a JSON object. This information can be verified and
-              trusted because it is digitally signed. JWTs can be signed using a
-              secret (with the HMAC algorithm) or a public/private key pair
-              using RSA or ECDSA. In authentication, when the user successfully
-              logs in using their credentials, a JSON Web Token will be
-              returned. Since tokens are credentials, great care must be taken
-              to prevent security issues. In general, you should not keep tokens
-              longer than required.You also should not store sensitive session
-              data in browser storage due to lack of security.
+              <span className="font-semibold">Ans:</span> The Prototypal
+              Inheritance is a feature in javascript used to add methods and
+              properties in objects. It is a method by which an object can
+              inherit the properties and methods of another object.
+              Traditionally, in order to get and set the [[Prototype]] of an
+              object, we use Object. getPrototypeOf and Object.
             </p>
           </div>
         </div>
