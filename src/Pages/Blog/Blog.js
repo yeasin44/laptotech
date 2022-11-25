@@ -52,15 +52,16 @@ const Blog = () => {
           className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box mt-1"
         >
           <div className="collapse-title text-xl font-medium">
-            3. What is the difference between javascript and Node JS?
+            3. What is a unit test? Why should we write unit tests?
           </div>
           <div className="collapse-content">
             <p>
-              <span className="font-semibold">Ans:</span> JavaScript is a simple
-              programming language that can be used with any browser that has
-              the JavaScript Engine installed. Node. js, on the other hand, is
-              an interpreter or execution environment for the JavaScript
-              programming
+              <span className="font-semibold">Ans:</span> The main objective of
+              unit testing is to isolate written code to test and determine if
+              it works as intended. Unit testing is an important step in the
+              development process, because if done correctly, it can help detect
+              early flaws in code which may be more difficult to find in later
+              testing stages.
             </p>
           </div>
         </div>
