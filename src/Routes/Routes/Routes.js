@@ -5,6 +5,7 @@ import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
 import Login from "../../Pages/Login/Login";
 import ProductCardDetails from "../../Pages/Services/Products/ProductCardDetails/ProductCardDetails";
 import Products from "../../Pages/Services/Products/Products";
+import Blog from "../../Pages/Blog/Blog";
 import SignUp from "../../Pages/SignUp/SignUp";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login></Login>,
+      },
+      {
+        path: "/blog",
+        element: <Blog></Blog>,
       },
       {
         path: "/products/:id",

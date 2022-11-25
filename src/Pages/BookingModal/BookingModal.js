@@ -1,6 +1,44 @@
-import React from "react";
+import React, { useContext } from "react";
+import toast from "react-hot-toast";
+import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
-const BookingModal = () => {
+const BookingModal = ({ bookProduct, setBookProduct }) => {
+  const { user } = useContext(AuthContext);
+  const { title } = bookProduct;
+
+  const handleBooking = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const title = form.title.value;
+    const name = form.name.value;
+    const email = form.email.value;
+    const phone = form.phone.value;
+    const location = form.location.value;
+
+    const booking = {
+      productName: title,
+      name,
+      email,
+      phone,
+      location,
+    };
+    // console.log(booking);
+    fetch("http://localhost:5000/bookings", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(booking),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.acknowledged) {
+          setBookProduct(null);
+          toast.success("Item Booked");
+        }
+      });
+  };
   return (
     <>
       <input type="checkbox" id="booking-modal" className="modal-toggle" />
@@ -12,13 +50,54 @@ const BookingModal = () => {
           >
             ✕
           </label>
-          <h3 className="text-lg font-bold">
-            Congratulations random Internet user!
-          </h3>
-          <p className="py-4">
-            You've been selected for a chance to get one year of subscription to
-            use Wikipedia for free!
-          </p>
+          {/* <h3 className="text-lg font-bold">{name}</h3> */}
+          <form
+            onSubmit={handleBooking}
+            className="grid grid-cols-1 gap-4 mt-6"
+          >
+            <input
+              disabled
+              name="title"
+              type="text"
+              placeholder="product name"
+              className="input w-full input-bordered"
+              defaultValue={title}
+            />
+            <input
+              disabled
+              name="name"
+              type="name"
+              placeholder="name"
+              className="input w-full input-bordered"
+              defaultValue={user?.displayName}
+            />
+            <input
+              disabled
+              name="email"
+              type="email"
+              placeholder="email"
+              className="input w-full input-bordered"
+              defaultValue={user?.email}
+            />
+
+            <input
+              name="phone"
+              type="text"
+              placeholder="phone"
+              className="input w-full input-bordered"
+            />
+            <input
+              name="location"
+              type="text"
+              placeholder="Location"
+              className="input w-full input-bordered"
+            />
+            <input
+              type="submit"
+              className="w-full btn btn-primary input-bordered"
+              value="submit"
+            />
+          </form>
         </div>
       </div>
     </>

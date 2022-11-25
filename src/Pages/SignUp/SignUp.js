@@ -35,7 +35,9 @@ const SignUp = () => {
           displayName: data.name,
         };
         updateUser(userInfo)
-          .then(() => {})
+          .then(() => {
+            navigate("/");
+          })
           .catch((error) => console.error(error));
       })
       .catch((error) => {
@@ -77,9 +79,6 @@ const SignUp = () => {
               type="email"
               className="input input-bordered w-full"
             />
-            {errors.email && (
-              <p className="text-red-600 mt-2">{errors.email?.message}</p>
-            )}
           </div>
           <div className="form-control w-full">
             <label className="label">

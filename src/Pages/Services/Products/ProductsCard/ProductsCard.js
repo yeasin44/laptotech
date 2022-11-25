@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./ProductsCard.css";
 
-const ProductsCard = ({ product }) => {
+const ProductsCard = ({ product, setBookProduct }) => {
   const {
     _id,
     img,
@@ -44,7 +44,11 @@ const ProductsCard = ({ product }) => {
         <p>Posted: {postTime}</p>
         <p>Description: {description}</p>
         <div className="card-actions justify-end">
-          <label htmlFor="booking-modal" className="btn btn-primary">
+          <label
+            onClick={() => setBookProduct(product)}
+            htmlFor="booking-modal"
+            className="btn btn-primary"
+          >
             Book Now
           </label>
         </div>
