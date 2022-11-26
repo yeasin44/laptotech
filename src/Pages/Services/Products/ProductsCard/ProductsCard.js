@@ -24,25 +24,35 @@ const ProductsCard = ({ product, setBookProduct }) => {
   }, []);
 
   return (
-    <div className="card w-[600px] m-6 shadow-xl bg-sky-100">
+    <div className="card w-96 m-6 shadow-xl bg-sky-100">
       <figure className="img-figure">
         <img src={img} alt="Shoes" />
       </figure>
       <div className="card-body">
         <h2 className="card-title">{title}</h2>
-        <p>
-          Resale Price: <span>৳</span>
+        <p className="text-sm">
+          <span className="font-bold">Resale Price:</span> <span>৳</span>
           {price}
         </p>
-        <p>
-          Original Price: <span>৳</span>
+        <p className="text-sm">
+          <span className="font-bold">Original Price:</span> <span>৳</span>
           {originalPrice}
         </p>
-        <p>Used: {yearOfUse}</p>
-        <p>Seller: {sellersName}</p>
-        <p>Location: {location}</p>
-        <p>Posted: {postTime}</p>
-        <p>Description: {description}</p>
+        <p className="text-sm">
+          <span className="font-bold">Used:</span> {yearOfUse}
+        </p>
+        <p className="text-sm">
+          <span className="font-bold">Seller:</span> {sellersName}
+        </p>
+        <p className="text-sm">
+          <span className="font-bold">Location:</span> {location}
+        </p>
+        <p className="text-sm">
+          <span className="font-bold">Posted:</span> {postTime}
+        </p>
+        <p className="text-sm">
+          <span className="font-bold">Description:</span> {description}
+        </p>
         <div className="card-actions justify-end">
           <label
             onClick={() => setBookProduct(product)}

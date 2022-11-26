@@ -8,6 +8,7 @@ import Products from "../../Pages/Services/Products/Products";
 import Blog from "../../Pages/Blog/Blog";
 import SignUp from "../../Pages/SignUp/SignUp";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import Categories from "../../Pages/Services/Categories/Categories";
 
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Main } = require("../../Layouts/Main/Main");
@@ -35,6 +36,16 @@ const router = createBrowserRouter([
         path: "/blog",
         element: <Blog></Blog>,
       },
+      {
+        path: "/products",
+        element: <Products></Products>,
+      },
+      // {
+      //   path: "products/product_id/:id",
+      //   element: <Categories></Categories>,
+      //   loader: ({ params }) =>
+      //     fetch(`http://localhost:5000/products/product_id/${params.id}`),
+      // },
       {
         path: "/products/:id",
         element: <ProductCardDetails></ProductCardDetails>,

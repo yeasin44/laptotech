@@ -70,7 +70,7 @@ const Blog = () => {
           className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box mt-1"
         >
           <div className="collapse-title text-xl font-medium">
-            4. How does NodeJS handle multiple requests at the same time?
+            4. React vs. Angular vs. Vue?
           </div>
           <div className="collapse-content">
             <p>

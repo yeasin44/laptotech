@@ -6,16 +6,20 @@ import Products from "../Products/Products";
 const Services = () => {
   return (
     <div>
-      <h2 className="text-xl font-bold text-center my-20">Services</h2>
-      <div className="flex justify-center mx-auto">
+      <h2 className="text-2xl font-bold text-center my-6 mt-12">
+        All Categories
+      </h2>
+      <div className="">
         <div className="">
           <Categories></Categories>
         </div>
-        <div className="">
-          <Products></Products>
-        </div>
-        <div>
-          <Advertise></Advertise>
+        <div className="f">
+          {/* <div className="">
+            <Products></Products>
+          </div> */}
+          <div>
+            <Advertise></Advertise>
+          </div>
         </div>
       </div>
     </div>
