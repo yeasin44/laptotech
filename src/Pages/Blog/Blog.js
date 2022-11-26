@@ -2,12 +2,12 @@ import React from "react";
 
 const Blog = () => {
   return (
-    <div className=" p-2 bg-slate-800 lg:h-screen md:h-screen">
+    <div className=" p-2 bg-slate-100  h-[800px] ">
       <div className="max-w-screen-lg mx-auto">
-        <h2 className="text-center text-white first-line: text-3xl font-semibold  py-6">
+        <h2 className="text-center text-black first-line: text-3xl font-semibold  py-6">
           Question & Answer
         </h2>
-        <div className="border border-white mx-auto w-4/5"></div>
+        <div className="border border-black mx-auto w-4/5"></div>
         <div
           tabIndex={0}
           className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box mt-4"
@@ -74,22 +74,28 @@ const Blog = () => {
           </div>
           <div className="collapse-content">
             <p>
-              <span className="font-semibold">Ans:</span> We know NodeJS
-              application is single-threaded. Say, if processing involves
-              request A that takes 10 seconds, it does not mean that a request
-              which comes after this request needs to wait 10 seconds to start
-              processing because NodeJS event loops are only single-threaded.
-              The entire NodeJS architecture is not single-threaded. How NodeJS
-              handle multiple client requests? NodeJS receives multiple client
-              requests and places them into EventQueue. NodeJS is built with the
-              concept of event-driven architecture. NodeJS has its own EventLoop
-              which is an infinite loop that receives requests and processes
-              them. EventLoop is the listener for the EventQueue. If NodeJS can
-              process the request without I/O blocking then the event loop would
-              itself process the request and sends the response back to the
-              client by itself. But, it is possible to process multiple requests
-              parallelly using the NodeJS cluster module or worker_threads
-              module.
+              <span className="font-semibold">Ans:</span> React is considered a
+              UI library. They define themselves as: “A JavaScript library for
+              building user interfaces” Facebook developers are behind the
+              development and maintenance of this library. And, in this case,
+              most of Facebook’s products are made with React. <br />
+              <br /> Angular is a front-end framework with lots of components,
+              services, and tools. On Angular’s site, you can see that they
+              define Angular as: “The modern web developer’s platform” It is
+              developed and maintained by Google developers, but curiously it is
+              not used to implement any of their most common products such as
+              Search or YouTube. <br />
+              <br /> Last but not least, Vue.js is, according to its site: “A
+              progressive JavaScript framework” Vue.js is developed and led by
+              Evan You, but also it counts on a huge open-source community.
+              <br />
+              <br />
+              These three frameworks have several things in common, such as each
+              follows a component-based architecture and allows creating UI
+              features quickly. React and Vue.js are mainly declarative, and
+              while Angular could also be declarative, it’s really more
+              imperative. Nevertheless, they present some more differences
+              according to their structure, architecture and way of working
             </p>
           </div>
         </div>
