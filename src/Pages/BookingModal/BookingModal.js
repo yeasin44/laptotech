@@ -36,6 +36,8 @@ const BookingModal = ({ bookProduct, setBookProduct }) => {
         if (data.acknowledged) {
           setBookProduct(null);
           toast.success("Item Booked");
+        } else {
+          toast.error(data.message);
         }
       });
   };
@@ -55,6 +57,7 @@ const BookingModal = ({ bookProduct, setBookProduct }) => {
             onSubmit={handleBooking}
             className="grid grid-cols-1 gap-4 mt-6"
           >
+            {/* <p>{title}</p> */}
             <input
               disabled
               name="title"

@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 import { FaGoogle } from "react-icons/fa";
+import useToken from "../../hooks/useToken";
 
 const Login = () => {
   const {
@@ -15,6 +16,7 @@ const Login = () => {
   } = useForm();
   const [loginError, setLoginError] = useState();
   const [loginUserEmail, setLoginUserEmail] = useState("");
+  const [token] = useToken(loginUserEmail);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -32,7 +34,9 @@ const Login = () => {
       })
       .catch((error) => console.error(error));
   };
-
+  if (token) {
+    navigate(from, { replace: true });
+  }
   const handleLogin = (data) => {
     // console.log(data);
     setLoginError("");
@@ -41,8 +45,8 @@ const Login = () => {
         const user = result.user;
         // console.log(user);
         // setLoginUserEmail(data.email);
+        setLoginUserEmail(data.email);
         toast.success("Login successfull");
-        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.error(error.message);

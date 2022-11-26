@@ -9,6 +9,7 @@ import Blog from "../../Pages/Blog/Blog";
 import SignUp from "../../Pages/SignUp/SignUp";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Categories from "../../Pages/Services/Categories/Categories";
+import MyOrders from "../../Pages/Dashboard/MyOrders/MyOrders";
 
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Main } = require("../../Layouts/Main/Main");
@@ -65,15 +66,15 @@ const router = createBrowserRouter([
     path: "/dashboard",
     element: (
       <PrivateRoute>
-        <Dashboard></Dashboard>
+        <DashboardLayout></DashboardLayout>
       </PrivateRoute>
     ),
-    children: [{}],
-  },
-  {
-    path: "/dashboard",
-    element: <DashboardLayout></DashboardLayout>,
-    children: [{}],
+    children: [
+      {
+        path: "/dashboard",
+        element: <MyOrders></MyOrders>,
+      },
+    ],
   },
 ]);
 

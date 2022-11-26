@@ -4,8 +4,15 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 import toast from "react-hot-toast";
 import { GoogleAuthProvider } from "firebase/auth";
+import useToken from "../../hooks/useToken";
 
 const SignUp = () => {
+  const { createUser, updateUser, socialLogin } = useContext(AuthContext);
+  const googleProvider = new GoogleAuthProvider();
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   const {
     register,
     formState: { errors },
@@ -14,13 +21,13 @@ const SignUp = () => {
 
   const [signInError, setSignInError] = useState("");
 
-  const { createUser, updateUser, socialLogin } = useContext(AuthContext);
+  // const { createUser, updateUser } = useContext(AuthContext);
   const [createdUserEmail, setCreatedUserEmail] = useState("");
-  const googleProvider = new GoogleAuthProvider();
+  const [token] = useToken(createdUserEmail);
 
-  const navigate = useNavigate();
-  const location = useLocation();
-  const from = location.state?.from?.pathname || "/";
+  if (token) {
+    navigate("/");
+  }
 
   const handleSignUp = (data) => {
     console.log(data);
@@ -30,13 +37,12 @@ const SignUp = () => {
         const user = result.user;
         console.log(user);
         toast.success("User created successfully");
-        navigate(from, { replace: true });
         const userInfo = {
           displayName: data.name,
         };
         updateUser(userInfo)
           .then(() => {
-            navigate("/");
+            saveUser(data.name, data.email);
           })
           .catch((error) => console.error(error));
       })
@@ -45,6 +51,33 @@ const SignUp = () => {
         setSignInError(error.message.slice(22, -2));
       });
   };
+
+  const saveUser = (name, email) => {
+    const user = { name, email };
+    fetch("http://localhost:5000/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log("save data", data);
+        // getUserToken(email);
+        setCreatedUserEmail(email);
+      });
+  };
+  // const getUserToken = (email) => {
+  //   fetch(`http://localhost:5000/jwt?email=${email}`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       if (data.accessToken) {
+  //         localStorage.setItem("accessToken", data.accessToken);
+  //         navigate("/");
+  //       }
+  //     });
+  // };
 
   const handleSocialLogin = () => {
     socialLogin(googleProvider)
