@@ -27,10 +27,10 @@ const MyOrders = () => {
   }
   return (
     <div className="">
-      <h2>My Orders</h2>
+      <h2 className="text-center text-lg mt-6 mb-2 font-bold">My Orders</h2>
       <div className="overflow-x-auto ">
         <table className="table w-full">
-          <thead className="">
+          <thead>
             <tr>
               <th></th>
               <th>Name</th>

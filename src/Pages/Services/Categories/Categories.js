@@ -13,7 +13,7 @@ const Categories = ({ product }) => {
       .then((data) => setCategories(data));
   }, []);
   return (
-    <div className="border-2 border-slate-900 lg:w-96 md:w-96 w-72  rounded-xl   mx-auto">
+    <div className="border-2 border-slate-900 w-96  rounded-xl   mx-auto">
       {/* <h2 className="text-lg font-bold mt-4 text-white text-center">
         All Categories
       </h2> */}
