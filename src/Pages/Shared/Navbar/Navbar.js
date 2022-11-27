@@ -15,32 +15,44 @@ const Navbar = () => {
   const menuItems = (
     <React.Fragment>
       <li>
-        <Link to="/">Home</Link>
+        <Link className="text-white font-semibold" to="/">
+          Home
+        </Link>
       </li>
       <li>
-        <Link to="/products">Products</Link>
+        <Link className="text-white font-semibold" to="/products">
+          Products
+        </Link>
       </li>
       <li>
-        <Link to="/blog">Blog</Link>
+        <Link className="text-white font-semibold" to="/blog">
+          Blog
+        </Link>
       </li>
       {user?.uid ? (
         <>
           <li>
-            <Link to="/dashboard">Dashboard</Link>
+            <Link className="text-white font-semibold" to="/dashboard">
+              Dashboard
+            </Link>
           </li>
           <li>
-            <button onClick={handleLogOut}>Log out</button>
+            <button className="text-white font-semibold" onClick={handleLogOut}>
+              Log out
+            </button>
           </li>
         </>
       ) : (
         <li>
-          <Link to="/login">Login</Link>
+          <Link className="text-white font-semibold" to="/login">
+            Login
+          </Link>
         </li>
       )}
     </React.Fragment>
   );
   return (
-    <div className="navbar bg-sky-100 flex justify-between">
+    <div className="navbar bg-slate-900 flex justify-between">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -61,14 +73,17 @@ const Navbar = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-slate-900 rounded-box w-52 "
           >
             {menuItems}
           </ul>
         </div>
         <Link to="/" className="flex justify-center items-center">
           <img className="w-20" src={logo} alt="" />
-          <Link to="/" className="font-bold normal-case text-xl ml-1">
+          <Link
+            to="/"
+            className="font-bold normal-case text-white text-2xl ml-2"
+          >
             Laptotech
           </Link>
         </Link>
