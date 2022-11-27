@@ -8,7 +8,7 @@ const Categories = ({ product }) => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    fetch("https://assignment-12-server-rose.vercel.app/category")
+    fetch("http://localhost:5000/category")
       .then((res) => res.json())
       .then((data) => setCategories(data));
   }, []);

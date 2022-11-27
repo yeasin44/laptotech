@@ -41,29 +41,29 @@ const router = createBrowserRouter([
       },
       {
         path: "/products",
-        element: <Products></Products>,
+        element: (
+          <PrivateRoute>
+            <Products></Products>
+          </PrivateRoute>
+        ),
       },
       // {
       //   path: "products/product_id/:id",
       //   element: <Categories></Categories>,
       //   loader: ({ params }) =>
-      //     fetch(`https://assignment-12-server-rose.vercel.app/products/product_id/${params.id}`),
+      //     fetch(`http://localhost:5000/products/product_id/${params.id}`),
       // },
       {
         path: "/products/:id",
         element: <ProductCardDetails></ProductCardDetails>,
         loader: ({ params }) =>
-          fetch(
-            `https://assignment-12-server-rose.vercel.app/products/${params.id}`
-          ),
+          fetch(`http://localhost:5000/products/${params.id}`),
       },
       {
         path: "/products/:id",
         element: <ProductCardDetails></ProductCardDetails>,
         loader: ({ params }) =>
-          fetch(
-            `https://assignment-12-server-rose.vercel.app/products/${params.id}`
-          ),
+          fetch(`http://localhost:5000/products/${params.id}`),
       },
     ],
   },
