@@ -55,7 +55,7 @@ const Navbar = () => {
     <div className="navbar bg-slate-900 flex justify-between">
       <div className="navbar-start">
         <div className="dropdown">
-          <label tabIndex={0} className="btn btn-ghost lg:hidden">
+          <label tabIndex={0} className="text-white btn-white lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -79,10 +79,10 @@ const Navbar = () => {
           </ul>
         </div>
         <Link to="/" className="flex justify-center items-center">
-          <img className="w-20" src={logo} alt="" />
+          <img className="w-8 md:w-14 lg:w-20 md:ml-2 " src={logo} alt="" />
           <Link
             to="/"
-            className="font-bold normal-case text-white text-2xl ml-2"
+            className="font-bold normal-case text-white  md:text-xl lg:text-2xl ml-2"
           >
             Laptotech
           </Link>
@@ -94,7 +94,7 @@ const Navbar = () => {
       <label
         htmlFor="dashboard-drawer"
         tabIndex={0}
-        className="btn btn-ghost lg:hidden"
+        className="text-white btn-white lg:hidden"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
