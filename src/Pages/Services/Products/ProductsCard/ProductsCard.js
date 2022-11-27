@@ -24,9 +24,9 @@ const ProductsCard = ({ product, setBookProduct }) => {
   }, []);
 
   return (
-    <div className="card w-96 m-6 shadow-xl bg-sky-100">
+    <div className="card w-96 shadow-xl bg-sky-100 mx-auto">
       <figure className="img-figure">
-        <img src={img} alt="Shoes" />
+        <img src={img} alt="" />
       </figure>
       <div className="card-body">
         <h2 className="card-title">{title}</h2>

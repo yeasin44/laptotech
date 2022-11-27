@@ -12,6 +12,7 @@ import Categories from "../../Pages/Services/Categories/Categories";
 import MyOrders from "../../Pages/Dashboard/MyOrders/MyOrders";
 import AllUsers from "../../Pages/Dashboard/AllUsers/AllUsers";
 import AdminRoute from "../AdminRoutes/AdminRoutes";
+import Category from "../../Pages/Services/Categories/Category/Category";
 
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Main } = require("../../Layouts/Main/Main");
@@ -41,11 +42,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/products",
-        element: (
-          <PrivateRoute>
-            <Products></Products>
-          </PrivateRoute>
-        ),
+        element: <Products></Products>,
       },
       // {
       //   path: "products/product_id/:id",
@@ -54,16 +51,21 @@ const router = createBrowserRouter([
       //     fetch(`http://localhost:5000/products/product_id/${params.id}`),
       // },
       {
-        path: "/products/:id",
+        path: "/products/category/:id",
         element: <ProductCardDetails></ProductCardDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/products/${params.id}`),
+          fetch(`http://localhost:5000/products/category/${params.id}`),
       },
       {
         path: "/products/:id",
         element: <ProductCardDetails></ProductCardDetails>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/products/${params.id}`),
+      },
+      {
+        path: "/products",
+        element: <Category></Category>,
+        loader: () => fetch(`http://localhost:5000/products`),
       },
     ],
   },

@@ -13,7 +13,7 @@ const Services = () => {
         <div className="">
           <Categories></Categories>
         </div>
-        <div className="f">
+        <div className="">
           {/* <div className="">
             <Products></Products>
           </div> */}

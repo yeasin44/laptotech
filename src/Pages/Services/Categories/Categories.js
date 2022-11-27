@@ -24,7 +24,7 @@ const Categories = ({ product }) => {
         {categories?.map((category) => (
           <ul>
             <Link to="/products" className="font-bold  ">
-              {category.name}
+              <button>{category.name}</button>
             </Link>
           </ul>
         ))}
