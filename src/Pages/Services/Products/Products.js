@@ -12,14 +12,16 @@ const Products = () => {
   const { data: products = [] } = useQuery({
     queryKey: ["products"],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/products`);
+      const res = await fetch(
+        `https://assignment-12-server-rose.vercel.app/products`
+      );
       const data = await res.json();
       return data;
     },
   });
 
   // useEffect(() => {
-  //   fetch("http://localhost:5000/products")
+  //   fetch("https://assignment-12-server-rose.vercel.app/products")
   //     .then((res) => res.json())
   //     .then((data) => setProducts(data));
   // }, []);

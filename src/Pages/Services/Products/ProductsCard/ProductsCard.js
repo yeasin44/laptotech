@@ -18,7 +18,7 @@ const ProductsCard = ({ product, setBookProduct }) => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/products/${_id}`)
+    fetch(`https://assignment-12-server-rose.vercel.app/products/${_id}`)
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);

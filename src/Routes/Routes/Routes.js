@@ -10,6 +10,8 @@ import SignUp from "../../Pages/SignUp/SignUp";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Categories from "../../Pages/Services/Categories/Categories";
 import MyOrders from "../../Pages/Dashboard/MyOrders/MyOrders";
+import AllUsers from "../../Pages/Dashboard/AllUsers/AllUsers";
+import AdminRoute from "../AdminRoutes/AdminRoutes";
 
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Main } = require("../../Layouts/Main/Main");
@@ -45,19 +47,23 @@ const router = createBrowserRouter([
       //   path: "products/product_id/:id",
       //   element: <Categories></Categories>,
       //   loader: ({ params }) =>
-      //     fetch(`http://localhost:5000/products/product_id/${params.id}`),
+      //     fetch(`https://assignment-12-server-rose.vercel.app/products/product_id/${params.id}`),
       // },
       {
         path: "/products/:id",
         element: <ProductCardDetails></ProductCardDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/products/${params.id}`),
+          fetch(
+            `https://assignment-12-server-rose.vercel.app/products/${params.id}`
+          ),
       },
       {
         path: "/products/:id",
         element: <ProductCardDetails></ProductCardDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/products/${params.id}`),
+          fetch(
+            `https://assignment-12-server-rose.vercel.app/products/${params.id}`
+          ),
       },
     ],
   },
@@ -73,6 +79,14 @@ const router = createBrowserRouter([
       {
         path: "/dashboard",
         element: <MyOrders></MyOrders>,
+      },
+      {
+        path: "/dashboard/allusers",
+        element: (
+          <AdminRoute>
+            <AllUsers></AllUsers>
+          </AdminRoute>
+        ),
       },
     ],
   },
