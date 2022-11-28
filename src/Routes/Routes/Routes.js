@@ -14,6 +14,9 @@ import AllUsers from "../../Pages/Dashboard/AllUsers/AllUsers";
 import AdminRoute from "../AdminRoutes/AdminRoutes";
 import Category from "../../Pages/Services/Categories/Category/Category";
 import AddProducts from "../../Pages/Dashboard/AddProducts/AddProducts";
+import AllBuyers from "../../Pages/Dashboard/AllBuyers/AllBuyers";
+import AllSellers from "../../Pages/Dashboard/AllSellers/AllSellers";
+import MyProducts from "../../Pages/Dashboard/Sellers/MyProducts/MyProducts";
 
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Main } = require("../../Layouts/Main/Main");
@@ -45,33 +48,23 @@ const router = createBrowserRouter([
         path: "/products",
         element: <Products></Products>,
       },
-      // {
-      //   path: "products/product_id/:id",
-      //   element: <Categories></Categories>,
-      //   loader: ({ params }) =>
-      //     fetch(`https://assignment-12-server-yeasin44.vercel.app/products/product_id/${params.id}`),
-      // },
+
       {
         path: "/products/category/:id",
         element: <ProductCardDetails></ProductCardDetails>,
         loader: ({ params }) =>
-          fetch(
-            `https://assignment-12-server-yeasin44.vercel.app/products/category/${params.id}`
-          ),
+          fetch(`http://localhost:5000/products/category/${params.id}`),
       },
       {
         path: "/products/:id",
         element: <ProductCardDetails></ProductCardDetails>,
         loader: ({ params }) =>
-          fetch(
-            `https://assignment-12-server-yeasin44.vercel.app/products/${params.id}`
-          ),
+          fetch(`http://localhost:5000/products/${params.id}`),
       },
       {
         path: "/products",
         element: <Category></Category>,
-        loader: () =>
-          fetch(`https://assignment-12-server-yeasin44.vercel.app/products`),
+        loader: () => fetch(`http://localhost:5000/products`),
       },
     ],
   },
@@ -97,10 +90,34 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: "/dashboard/allBuyers",
+        element: (
+          <AdminRoute>
+            <AllBuyers></AllBuyers>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/allSellers",
+        element: (
+          <AdminRoute>
+            <AllSellers></AllSellers>
+          </AdminRoute>
+        ),
+      },
+      {
         path: "/dashboard/addProducts",
         element: (
           <AdminRoute>
             <AddProducts></AddProducts>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/myProducts",
+        element: (
+          <AdminRoute>
+            <MyProducts></MyProducts>
           </AdminRoute>
         ),
       },

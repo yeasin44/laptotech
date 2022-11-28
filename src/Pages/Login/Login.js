@@ -57,16 +57,16 @@ const Login = () => {
     <div className="h-[800px]   flex justify-center items-center">
       <div className="w-96 p-8 border-2 border-slate-900 rounded-2xl">
         <h2 className="text-xl text-center font-bold py-6">Login</h2>
+        <div className="btn btn-outline w-full flex justify-center items-center">
+          <FaGoogle className="text-lg mr-2" />
+          <input
+            onClick={handleSocialLogin}
+            type="submit"
+            value="CONTINUE WITH GOOGLE"
+          />
+        </div>
+        <div className="divider">OR</div>
         <form onSubmit={handleSubmit(handleLogin)}>
-          <div className="btn btn-outline w-full flex justify-center items-center">
-            <FaGoogle className="text-lg mr-2" />
-            <input
-              onClick={handleSocialLogin}
-              type="submit"
-              value="CONTINUE WITH GOOGLE"
-            />
-          </div>
-          <div className="divider">OR</div>
           <div className="form-control w-full ">
             <label className="label">
               <span className="label-text">Email</span>

@@ -10,7 +10,7 @@ const SpecificCategory = () => {
     queryKey: ["product"],
     queryFn: async () => {
       const res = await fetch(
-        `https://assignment-12-server-yeasin44.vercel.app/products/product_id/${id}`
+        `http://localhost:5000/products/product_id/${id}`
       );
       const data = await res.json();
       return data;

@@ -24,22 +24,25 @@ const DashboardLayout = () => {
         <div className="drawer-side">
           <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
           <ul className="menu p-4 w-80 bg-base-100 text-base-content">
-            {!isSeller ||
-              (isAdmin && (
-                <li>
-                  <Link to="/dashboard">My Orders</Link>
-                </li>
-              ))}
+            {!isAdmin && !isSeller && (
+              <li>
+                <Link to="/dashboard">My Orders</Link>
+              </li>
+            )}
             {isSeller && (
               <>
                 <li>
-                  <Link to="/dashboard">My Buyers</Link>
+                  <Link to="/dashboard/allBuyers">My Buyers</Link>
                 </li>
                 <li>
                   <Link to="/dashboard/addProducts">Add product</Link>
                 </li>
+                <li>
+                  <Link to="/dashboard/myProducts">My products</Link>
+                </li>
               </>
             )}
+
             {isAdmin && (
               <>
                 <li>
