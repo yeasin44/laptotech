@@ -40,7 +40,7 @@ const AddProducts = () => {
             yearOfUse: data.use,
             image: imgData.data.url,
           };
-          fetch(`http://localhost:5000/myProducts`, {
+          fetch(`https://assignment-12-server-yeasin44.vercel.app/myProducts`, {
             method: "POST",
             headers: {
               "content-type": "application/json",

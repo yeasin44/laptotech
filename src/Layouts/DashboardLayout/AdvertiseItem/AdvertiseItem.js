@@ -56,7 +56,7 @@ const AdvertiseItem = () => {
             yearOfUse: data.use,
             image: imgData.data.url,
           };
-          fetch(`http://localhost:5000/advertise`, {
+          fetch(`https://assignment-12-server-yeasin44.vercel.app/advertise`, {
             method: "POST",
             headers: {
               "content-type": "application/json",

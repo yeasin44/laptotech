@@ -6,18 +6,23 @@ const AllBuyers = () => {
   const { data: users = [], refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/users/buyers`);
+      const res = await fetch(
+        `https://assignment-12-server-yeasin44.vercel.app/users/buyers`
+      );
       const data = await res.json();
       return data;
     },
   });
   const handleSeller = (id) => {
-    fetch(`http://localhost:5000/users/seller/${id}`, {
-      method: "PUT",
-      headers: {
-        authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
+    fetch(
+      `https://assignment-12-server-yeasin44.vercel.app/users/seller/${id}`,
+      {
+        method: "PUT",
+        headers: {
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount) {

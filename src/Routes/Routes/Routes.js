@@ -53,18 +53,23 @@ const router = createBrowserRouter([
         path: "/products/category/:id",
         element: <ProductCardDetails></ProductCardDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/products/category/${params.id}`),
+          fetch(
+            `https://assignment-12-server-yeasin44.vercel.app/products/category/${params.id}`
+          ),
       },
       {
         path: "/products/:id",
         element: <ProductCardDetails></ProductCardDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/products/${params.id}`),
+          fetch(
+            `https://assignment-12-server-yeasin44.vercel.app/products/${params.id}`
+          ),
       },
       {
         path: "/products",
         element: <Category></Category>,
-        loader: () => fetch(`http://localhost:5000/products`),
+        loader: () =>
+          fetch(`https://assignment-12-server-yeasin44.vercel.app/products`),
       },
     ],
   },
