@@ -47,6 +47,9 @@ const Navbar = () => {
           <Link className="text-white font-semibold" to="/login">
             Login
           </Link>
+          <Link className="text-white font-semibold" to="/signUp">
+            Sign up
+          </Link>
         </li>
       )}
     </React.Fragment>
@@ -79,7 +82,7 @@ const Navbar = () => {
           </ul>
         </div>
         <Link to="/" className="flex justify-center items-center">
-          <img className="w-8 md:w-14 lg:w-20 md:ml-2 " src={logo} alt="" />
+          <img className="w-8 md:w-14 lg:w-14 md:ml-2 " src={logo} alt="" />
           <Link
             to="/"
             className="font-bold normal-case text-white  md:text-xl lg:text-2xl ml-2"

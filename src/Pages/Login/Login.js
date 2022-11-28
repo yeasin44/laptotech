@@ -104,15 +104,6 @@ const Login = () => {
               <p className="text-red-600 py-1">{errors.password?.message}</p>
             )}
           </div>
-          <label className="label">
-            <span className="label-text">Options</span>
-          </label>
-          <select className="select select-bordered w-full max-w-xs mb-4">
-            <option disabled selected>
-              User
-            </option>
-            <option>Seller</option>
-          </select>
 
           <input
             className="btn btn-accent w-full"

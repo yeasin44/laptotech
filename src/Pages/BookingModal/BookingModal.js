@@ -23,7 +23,7 @@ const BookingModal = ({ bookProduct, setBookProduct }) => {
       location,
     };
     // console.log(booking);
-    fetch("http://localhost:5000/bookings", {
+    fetch("https://assignment-12-server-yeasin44.vercel.app/bookings", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -32,7 +32,7 @@ const BookingModal = ({ bookProduct, setBookProduct }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data.acknowledged) {
           setBookProduct(null);
           toast.success("Item Booked");

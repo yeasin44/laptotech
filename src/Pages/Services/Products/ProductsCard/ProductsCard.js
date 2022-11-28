@@ -18,13 +18,13 @@ const ProductsCard = ({ product, setBookProduct }) => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/products/${_id}`)
+    fetch(`https://assignment-12-server-yeasin44.vercel.app/products/${_id}`)
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
 
   return (
-    <div className="card w-96 shadow-xl bg-sky-100 mx-auto">
+    <div className="card w-96 shadow-2xl mx-auto">
       <figure className="img-figure">
         <img src={img} alt="" />
       </figure>

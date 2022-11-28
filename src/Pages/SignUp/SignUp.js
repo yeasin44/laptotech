@@ -30,7 +30,7 @@ const SignUp = () => {
   }
 
   const handleSignUp = (data) => {
-    console.log(data);
+    // console.log(data);
     setSignInError("");
     createUser(data.email, data.password)
       .then((result) => {
@@ -42,7 +42,7 @@ const SignUp = () => {
         };
         updateUser(userInfo)
           .then(() => {
-            saveUser(data.name, data.email);
+            saveUser(data.name, data.email, data.role);
           })
           .catch((error) => console.error(error));
       })
@@ -52,9 +52,9 @@ const SignUp = () => {
       });
   };
 
-  const saveUser = (name, email) => {
-    const user = { name, email };
-    fetch("http://localhost:5000/users", {
+  const saveUser = (name, email, role) => {
+    const user = { name, email, role };
+    fetch("https://assignment-12-server-yeasin44.vercel.app/users", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -68,16 +68,6 @@ const SignUp = () => {
         setCreatedUserEmail(email);
       });
   };
-  // const getUserToken = (email) => {
-  //   fetch(`http://localhost:5000/jwt?email=${email}`)
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       if (data.accessToken) {
-  //         localStorage.setItem("accessToken", data.accessToken);
-  //         navigate("/");
-  //       }
-  //     });
-  // };
 
   const handleSocialLogin = () => {
     socialLogin(googleProvider)
@@ -112,6 +102,18 @@ const SignUp = () => {
               type="email"
               className="input input-bordered w-full"
             />
+          </div>
+          <div className="form-control w-full">
+            <label className="label">
+              <span className="label-text">Options</span>
+            </label>
+            <select
+              {...register("role")}
+              className="select select-bordered w-full"
+            >
+              <option>user</option>
+              <option>seller</option>
+            </select>
           </div>
           <div className="form-control w-full">
             <label className="label">

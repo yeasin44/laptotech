@@ -13,6 +13,7 @@ import MyOrders from "../../Pages/Dashboard/MyOrders/MyOrders";
 import AllUsers from "../../Pages/Dashboard/AllUsers/AllUsers";
 import AdminRoute from "../AdminRoutes/AdminRoutes";
 import Category from "../../Pages/Services/Categories/Category/Category";
+import AddProducts from "../../Pages/Dashboard/AddProducts/AddProducts";
 
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Main } = require("../../Layouts/Main/Main");
@@ -48,24 +49,29 @@ const router = createBrowserRouter([
       //   path: "products/product_id/:id",
       //   element: <Categories></Categories>,
       //   loader: ({ params }) =>
-      //     fetch(`http://localhost:5000/products/product_id/${params.id}`),
+      //     fetch(`https://assignment-12-server-yeasin44.vercel.app/products/product_id/${params.id}`),
       // },
       {
         path: "/products/category/:id",
         element: <ProductCardDetails></ProductCardDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/products/category/${params.id}`),
+          fetch(
+            `https://assignment-12-server-yeasin44.vercel.app/products/category/${params.id}`
+          ),
       },
       {
         path: "/products/:id",
         element: <ProductCardDetails></ProductCardDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/products/${params.id}`),
+          fetch(
+            `https://assignment-12-server-yeasin44.vercel.app/products/${params.id}`
+          ),
       },
       {
         path: "/products",
         element: <Category></Category>,
-        loader: () => fetch(`http://localhost:5000/products`),
+        loader: () =>
+          fetch(`https://assignment-12-server-yeasin44.vercel.app/products`),
       },
     ],
   },
@@ -87,6 +93,14 @@ const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <AllUsers></AllUsers>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/addProducts",
+        element: (
+          <AdminRoute>
+            <AddProducts></AddProducts>
           </AdminRoute>
         ),
       },
