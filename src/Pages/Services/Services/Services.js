@@ -1,7 +1,6 @@
 import React from "react";
 import Advertise from "../Advertise/Advertise";
 import Categories from "../Categories/Categories";
-import Products from "../Products/Products";
 
 const Services = () => {
   return (
@@ -14,9 +13,6 @@ const Services = () => {
           <Categories></Categories>
         </div>
         <div className="">
-          {/* <div className="">
-            <Products></Products>
-          </div> */}
           <div>
             <Advertise></Advertise>
           </div>

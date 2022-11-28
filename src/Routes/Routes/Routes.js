@@ -1,5 +1,4 @@
 import DashboardLayout from "../../Layouts/DashboardLayout/DashboardLayout";
-import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
 
 import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
 import Login from "../../Pages/Login/Login";
@@ -8,7 +7,7 @@ import Products from "../../Pages/Services/Products/Products";
 import Blog from "../../Pages/Blog/Blog";
 import SignUp from "../../Pages/SignUp/SignUp";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
-import Categories from "../../Pages/Services/Categories/Categories";
+
 import MyOrders from "../../Pages/Dashboard/MyOrders/MyOrders";
 import AllUsers from "../../Pages/Dashboard/AllUsers/AllUsers";
 import AdminRoute from "../AdminRoutes/AdminRoutes";
@@ -17,6 +16,7 @@ import AddProducts from "../../Pages/Dashboard/AddProducts/AddProducts";
 import AllBuyers from "../../Pages/Dashboard/AllBuyers/AllBuyers";
 import AllSellers from "../../Pages/Dashboard/AllSellers/AllSellers";
 import MyProducts from "../../Pages/Dashboard/Sellers/MyProducts/MyProducts";
+import ReportedItems from "../../Pages/Dashboard/ReportedItems/ReportedItems";
 
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Main } = require("../../Layouts/Main/Main");
@@ -118,6 +118,14 @@ const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <MyProducts></MyProducts>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/reportedItems",
+        element: (
+          <AdminRoute>
+            <ReportedItems></ReportedItems>
           </AdminRoute>
         ),
       },
