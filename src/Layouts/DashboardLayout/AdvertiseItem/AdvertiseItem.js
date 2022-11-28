@@ -1,9 +1,11 @@
+import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import Loading from "../../../components/Loading/Loading";
 
-const AddProducts = () => {
+const AdvertiseItem = () => {
   const {
     register,
     formState: { errors },
@@ -12,7 +14,21 @@ const AddProducts = () => {
   const navigate = useNavigate();
 
   const imgHostKey = process.env.REACT_APP_imageBB_key;
+  //   console.log(imgHostKey);
+  const { data: myProducts, isLoading } = useQuery({
+    queryKey: ["myProducts"],
+    queryFn: async () => {
+      const res = await fetch(
+        "https://doctors-portal-server-nine-blue.vercel.app/appointmentSpecialty"
+      );
+      const data = await res.json();
+      return data;
+    },
+  });
 
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
   const handleAddProducts = (data) => {
     // console.log(data.image[0]);
     const image = data.image[0];
@@ -29,7 +45,7 @@ const AddProducts = () => {
           console.log(imgData.data.url);
           //   doctor er information server a send korar jonno
 
-          const myProducts = {
+          const advertise = {
             productName: data.title,
             price: data.price,
             condition: data.condition,
@@ -40,17 +56,17 @@ const AddProducts = () => {
             yearOfUse: data.use,
             image: imgData.data.url,
           };
-          fetch(`http://localhost:5000/myProducts`, {
+          fetch(`http://localhost:5000/advertise`, {
             method: "POST",
             headers: {
               "content-type": "application/json",
               authorization: `bearer ${localStorage.getItem("accessToken")}`,
             },
-            body: JSON.stringify(myProducts),
+            body: JSON.stringify(advertise),
           })
             .then((res) => res.json())
             .then((result) => {
-              // console.log(result);
+              console.log(result);
               toast.success(`${data.title} has been added`);
               navigate("/dashboard/myProducts");
             });
@@ -198,4 +214,4 @@ const AddProducts = () => {
   );
 };
 
-export default AddProducts;
+export default AdvertiseItem;
