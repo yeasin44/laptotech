@@ -51,10 +51,9 @@ const SignUp = () => {
         setSignInError(error.message.slice(22, -2));
       });
   };
-
   const saveUser = (name, email, role) => {
     const user = { name, email, role };
-    fetch("https://assignment-12-server-yeasin44.vercel.app/users", {
+    fetch("http://localhost:5000/users", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -69,15 +68,28 @@ const SignUp = () => {
       });
   };
 
-  const handleSocialLogin = () => {
+  const handleSocialLogin = (data) => {
     socialLogin(googleProvider)
       .then((result) => {
         const user = result.user;
+
         toast.success("Login successfull");
         navigate(from, { replace: true });
+        const userInfo = {
+          displayName: data.name,
+        };
+        updateUser(userInfo)
+          .then(() => {
+            saveUser(data.name, data.email, data.role);
+          })
+          .catch((error) => console.error(error));
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        console.error(error);
+        setSignInError(error.message.slice(22, -2));
+      });
   };
+
   return (
     <div className="h-[800px] flex justify-center items-center">
       <div className="w-96 p-6 border-2 rounded-2xl border-slate-900 ">
@@ -140,25 +152,25 @@ const SignUp = () => {
           </div>
           <p>
             Already have an account?{" "}
-            <Link to="/login" className="text-primary mt-2">
+            <Link to="/login" className="text-primary mt-2 font-semibold">
               Login
             </Link>
           </p>
           <input
-            className="btn btn-accent w-full mt-4"
+            className="btn btn-primary w-full mt-4"
             value="Sign Up"
             type="submit"
           />
           {signInError && <p className="text-red-600">{signInError}</p>}
-          <div className="divider">OR</div>
-
-          <input
-            onClick={handleSocialLogin}
-            type="submit"
-            value="CONTINUE WITH GOOGLE"
-            className="w-full btn btn-outline"
-          />
         </form>
+        {/* <div className="divider">OR</div>
+
+        <input
+          onClick={handleSocialLogin}
+          type="submit"
+          value="CONTINUE WITH GOOGLE"
+          className="w-full btn btn-outline"
+        /> */}
       </div>
     </div>
   );

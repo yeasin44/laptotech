@@ -6,24 +6,19 @@ const AllUsers = () => {
   const { data: users = [], refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await fetch(
-        `https://assignment-12-server-yeasin44.vercel.app/users`
-      );
+      const res = await fetch(`http://localhost:5000/users`);
       const data = await res.json();
       return data;
     },
   });
 
   const handleMakeAdmin = (id) => {
-    fetch(
-      `https://assignment-12-server-yeasin44.vercel.app/users/admin/${id}`,
-      {
-        method: "PUT",
-        headers: {
-          authorization: `bearer ${localStorage.getItem("accessToken")}`,
-        },
-      }
-    )
+    fetch(`http://localhost:5000/users/admin/${id}`, {
+      method: "PUT",
+      headers: {
+        authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount) {
@@ -33,7 +28,7 @@ const AllUsers = () => {
       });
   };
   // const handleSeller = (id) => {
-  //   fetch(`https://assignment-12-server-yeasin44.vercel.app/users/seller/${id}`, {
+  //   fetch(`http://localhost:5000/users/seller/${id}`, {
   //     method: "PUT",
   //     headers: {
   //       authorization: `bearer ${localStorage.getItem("accessToken")}`,

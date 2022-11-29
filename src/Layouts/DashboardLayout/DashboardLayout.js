@@ -29,7 +29,7 @@ const DashboardLayout = () => {
                 <Link to="/dashboard">My Orders</Link>
               </li>
             )}
-            {isSeller && (
+            {isSeller && user?.email && (
               <>
                 <li>
                   <Link to="/dashboard/allBuyers">My Buyers</Link>

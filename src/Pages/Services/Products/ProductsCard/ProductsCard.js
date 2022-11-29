@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+
 import "./ProductsCard.css";
 
 const ProductsCard = ({ product, setBookProduct }) => {
@@ -18,7 +18,7 @@ const ProductsCard = ({ product, setBookProduct }) => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch(`https://assignment-12-server-yeasin44.vercel.app/products/${_id}`)
+    fetch(`http://localhost:5000/products/${_id}`)
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
@@ -29,39 +29,41 @@ const ProductsCard = ({ product, setBookProduct }) => {
         <img src={img} alt="" />
       </figure>
       <div className="card-body">
-        <h2 className="card-title">{title}</h2>
-        <p className="text-sm">
-          <span className="font-bold">Resale Price:</span> <span>৳</span>
-          {price}
-        </p>
-        <p className="text-sm">
-          <span className="font-bold">Original Price:</span> <span>৳</span>
-          {originalPrice}
-        </p>
-        <p className="text-sm">
-          <span className="font-bold">Used:</span> {yearOfUse}
-        </p>
-        <p className="text-sm">
-          <span className="font-bold">Seller:</span> {sellersName}
-        </p>
-        <p className="text-sm">
-          <span className="font-bold">Location:</span> {location}
-        </p>
-        <p className="text-sm">
-          <span className="font-bold">Posted:</span> {postTime}
-        </p>
-        <p className="text-sm">
-          <span className="font-bold">Description:</span> {description}
-        </p>
-        <div className="card-actions justify-end">
-          <label
-            onClick={() => setBookProduct(product)}
-            htmlFor="booking-modal"
-            className="btn btn-primary"
-          >
-            Book Now
-          </label>
+        <div>
+          <h2 className="card-title mb-6">{title}</h2>
+          <p className="text-sm">
+            <span className="font-bold">Resale Price:</span> <span>৳</span>
+            {price}
+          </p>
+          <p className="text-sm">
+            <span className="font-bold">Original Price:</span> <span>৳</span>
+            {originalPrice}
+          </p>
+          <p className="text-sm">
+            <span className="font-bold">Used:</span> {yearOfUse}
+          </p>
+          <p className="text-sm">
+            <span className="font-bold">Seller:</span> {sellersName}
+          </p>
+          <p className="text-sm">
+            <span className="font-bold">Location:</span> {location}
+          </p>
+          <p className="text-sm">
+            <span className="font-bold">Posted:</span> {postTime}
+          </p>
+          <p className="text-sm">
+            <span className="font-bold">Description:</span> {description}
+          </p>
         </div>
+      </div>
+      <div className="card-actions justify-end  p-6">
+        <label
+          onClick={() => setBookProduct(product)}
+          htmlFor="booking-modal"
+          className="btn btn-primary w-full"
+        >
+          Book Now
+        </label>
       </div>
     </div>
   );

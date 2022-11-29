@@ -12,21 +12,23 @@ const Products = () => {
   const { data: products = [] } = useQuery({
     queryKey: ["products"],
     queryFn: async () => {
-      const res = await fetch(
-        `https://assignment-12-server-yeasin44.vercel.app/products`
-      );
+      const res = await fetch(`http://localhost:5000/products`);
       const data = await res.json();
       return data;
     },
   });
 
   // useEffect(() => {
-  //   fetch("https://assignment-12-server-yeasin44.vercel.app/products")
+  //   fetch("http://localhost:5000/products")
   //     .then((res) => res.json())
   //     .then((data) => setProducts(data));
   // }, []);
   return (
     <div className="">
+      <div className="mt-6 mb-12">
+        <h2 className="text-center text-2xl font-bold">All Products</h2>
+        <div className="border border-black w-40 mx-auto"></div>
+      </div>
       <div className="grid  grid-cols-1 lg:grid-cols-3 md:grid-cols-2 my-6 gap-4">
         {products?.map((product) => (
           <ProductsCard

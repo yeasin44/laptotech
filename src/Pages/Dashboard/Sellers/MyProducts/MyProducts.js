@@ -7,14 +7,11 @@ const MyProducts = () => {
     queryKey: ["products"],
     queryFn: async () => {
       try {
-        const res = await fetch(
-          `https://assignment-12-server-yeasin44.vercel.app/myProducts`,
-          {
-            headers: {
-              authorization: `bearer ${localStorage.getItem("accessToken")}`,
-            },
-          }
-        );
+        const res = await fetch(`http://localhost:5000/myProducts`, {
+          headers: {
+            authorization: `bearer ${localStorage.getItem("accessToken")}`,
+          },
+        });
         const data = await res.json();
         return data;
       } catch (error) {}

@@ -50,26 +50,21 @@ const router = createBrowserRouter([
       },
 
       {
-        path: "/products/category/:id",
+        path: "/category/:id",
         element: <ProductCardDetails></ProductCardDetails>,
         loader: ({ params }) =>
-          fetch(
-            `https://assignment-12-server-yeasin44.vercel.app/products/category/${params.id}`
-          ),
+          fetch(`http://localhost:5000/category/${params.id}`),
       },
+      // {
+      //   path: "/products",
+      //   element: <Category></Category>,
+      //   loader: () => fetch(`http://localhost:5000/products`),
+      // },
       {
-        path: "/products/:id",
-        element: <ProductCardDetails></ProductCardDetails>,
-        loader: ({ params }) =>
-          fetch(
-            `https://assignment-12-server-yeasin44.vercel.app/products/${params.id}`
-          ),
-      },
-      {
-        path: "/products",
+        path: "/category/:product_id",
         element: <Category></Category>,
-        loader: () =>
-          fetch(`https://assignment-12-server-yeasin44.vercel.app/products`),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/category/${params.product_id}`),
       },
     ],
   },
